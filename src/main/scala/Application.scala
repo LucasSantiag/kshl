@@ -14,7 +14,7 @@ object Application extends App {
       .config(sparkConf)
       .getOrCreate()
 
-    val ssc = new StreamingContext(session.sparkContext, Seconds(5))
+    val ssc = new StreamingContext(session.sparkContext, Seconds(1))
 
   }
 
