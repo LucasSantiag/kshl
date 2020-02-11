@@ -38,4 +38,17 @@ RUN tar xzf downloadpacks/target/downloadpacks/spark.tgz && \
 RUN tar xzf downloadpacks/target/downloadpacks/zookeeper.tar.gz && \
     mv apache-zookeeper-3.5.6 zookeeper
 
+RUN groupadd -g "1001" lucas || true
+RUN adduser --disabled-password --uid "1001" --gid "1001" --gecos lucas lucas
+RUN groupadd -r supersudo && echo "%supersudo ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/supersudo
+RUN usermod -a -G supersudo lucas
+
+
+USER lucas
+ENV HOME /home/lucas
+ENV USER lucas
+WORKDIR /home/lucas
+
+EXPOSE 8085
+
 CMD /bin/bash
