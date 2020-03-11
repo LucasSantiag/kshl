@@ -30,14 +30,14 @@ RUN tar xzf downloadpacks/target/downloadpacks/spark.tgz && \
     mv spark-2.4.5-bin-hadoop2.7 spark && \
     spark-shell --version
 
-#kafka
-#hadoop
-
-
 RUN tar xzf downloadpacks/target/downloadpacks/zookeeper.tar.gz && \
     mv apache-zookeeper-3.5.6 zookeeper
 RUN bash conf-scripts/zookeeper.sh
-RUN zookeeper/bin/zkServer.sh start; zookeeper/bin/zkServer.sh stop;
+#RUN zookeeper/bin/zkServer.sh start; zookeeper/bin/zkServer.sh stop;
+
+#kafka
+
+#hadoop
 
 RUN groupadd -g "1001" lucas || true
 RUN adduser --disabled-password --uid "1001" --gid "1001" --gecos lucas lucas
